@@ -7,7 +7,15 @@
         [
             "@eclass/semantic-release-docker",
             {
-                "baseImageName": "doks-deploy-tools"
+                "baseImageName": "doks-deploy-tools",
+                "registries": [
+                    {
+                        "url": "docker.io",
+                        "imageName": "docker.io/brpaz/doks-deploy-tools",
+                        "user": "DOCKER_USER",
+                        "password": "DOCKER_PASSWORD"
+                    }
+                ]
             }
         ]
     ]
