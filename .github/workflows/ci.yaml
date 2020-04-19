@@ -1,0 +1,62 @@
+# Reference:
+# https://help.github.com/en/articles/configuring-a-workflow
+# https://help.github.com/en/articles/about-github-actions
+#
+name: CI
+on: [push, pull_request]
+
+env:
+  CONTAINER_TEST_IMAGE: doks-deploy-tools-${{ github.sha }}
+
+jobs:
+  lint:
+    name: "Lint Dockerfile"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: brpaz/hadolint-action@master
+
+  build:
+    name: "Build Image"
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@master
+      - uses: docker-practice/actions-setup-docker@master
+      - run: docker version
+      - name: Build image
+        run: docker build . -t $CONTAINER_TEST_IMAGE
+      - name: Container Structure test
+        uses: brpaz/structure-tests-action@v1.1.2
+        with:
+          image: ${{ env.CONTAINER_TEST_IMAGE }}
+      - name: Crate image artifact
+        run: docker save $CONTAINER_TEST_IMAGE > image.tar
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: image
+          path: image.tar.gz
+
+  publish:
+    name: "Publish to Docker Hub"
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download image artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: image
+      - name: Load Docker image
+        run: docker load < image.tar.gz
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @iteratec/semantic-release-docker
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_USER }}

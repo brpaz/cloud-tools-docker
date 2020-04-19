@@ -1,0 +1,26 @@
+schemaVersion: 2.0.0
+commandTests:
+  - name: "Git is installed"
+    command: git
+    args: ["version"]
+    exitCode: 0
+  - name: "Kubectl is installed"
+    command: kubectl
+    args: ["version", "--client"]
+    exitCode: 0
+  - name: "Doctl is Installed"
+    command: doctl
+    args: ["version"]
+    exitCode: 0
+  - name: "Helm is installed"
+    command: helm
+    args: ["version"]
+    exitCode: 0
+  - name: "Docker is installed"
+    command: docker
+    args: ["-v"]
+    exitCode: 0
+  - name: "Sops is installed"
+    command: sops
+    args: ["-v"]
+    exitCode: 0

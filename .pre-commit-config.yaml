@@ -1,0 +1,12 @@
+- repo: local
+  hooks:
+    - id: hadolint
+      name: Lint Dockerfile
+      entry: make lint
+      language: system
+      files: Dockerfile
+    - id: tests
+      name: Container Tests
+      entry: make test
+      language: system
+      files: Dockerfile

@@ -1,0 +1,13 @@
+**/*.log
+**/._*
+**/.DS_Store
+**/.gitignore
+**/.gitattributes
+**/Thumbs.db
+.dockerignore
+Dockerfile
+Makefile
+.hadolint.yaml
+.editorconfig
+structure-tests.yaml
+.github
