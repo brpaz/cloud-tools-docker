@@ -5,11 +5,9 @@
         "@semantic-release/git",
         "@semantic-release/github",
         [
-            "@iteratec/semantic-release-docker",
+            "@eclass/semantic-release-docker",
             {
-                "imageName": [
-                    "doks-deploy-tools"
-                ]
+                "baseImageName": "doks-deploy-tools"
             }
         ]
     ]
