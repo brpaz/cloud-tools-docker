@@ -31,7 +31,7 @@ jobs:
         with:
           image: ${{ env.CONTAINER_TEST_IMAGE }}
       - name: Crate image artifact
-        run: docker save $CONTAINER_TEST_IMAGE > image.tar.gz
+        run: docker save -o image.tar.gz $CONTAINER_TEST_IMAGE
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
@@ -50,6 +50,8 @@ jobs:
           name: image
       - name: Load Docker image
         run: docker load < image/image.tar.gz
+      - run: docker image ls
+      - uses: actions/checkout@master
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
         with:
