@@ -31,7 +31,7 @@ jobs:
         with:
           image: ${{ env.CONTAINER_TEST_IMAGE }}
       - name: Crate image artifact
-        run: docker save $CONTAINER_TEST_IMAGE > image.tar
+        run: docker save $CONTAINER_TEST_IMAGE > image.tar.gz
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
@@ -58,5 +58,5 @@ jobs:
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_USER }}
+          DOCKER_REGISTRY_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_USER }}
