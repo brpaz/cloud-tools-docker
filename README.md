@@ -18,7 +18,11 @@
 
 ## Usage
 
-You can get the latest image from [Docker hub](https://hub.docker.com/).
+You can get the latest image from [Docker hub](https://hub.docker.com/repository/docker/brpaz/doks-deploy-tools).
+
+```bash
+docker pull brpaz/doks-deploy-tools:latest
+```
 
 ## Run tests
 
