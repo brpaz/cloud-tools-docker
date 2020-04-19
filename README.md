@@ -2,7 +2,7 @@
 
 > Docker Image containing all the tools needed to deploy an application to [DigitalOcean Kubernetes](https://www.digitalocean.com/products/kubernetes/).
 
-[![Build Status](https://img.shields.io/github/workflow/status/brpaz/doks-deploy-tools/CI?style=for-the-badge)(https://github.com/brpaz/doks-deploy-tools/actions)
+[![Build Status](https://img.shields.io/github/workflow/status/brpaz/doks-deploy-tools/CI?style=for-the-badge)](https://github.com/brpaz/doks-deploy-tools/actions)
 ![Docker Pulls](https://img.shields.io/docker/pulls/brpaz/doks-deploy-tools.svg?style=for-the-badge)
 ![MicroBadger Layers](https://img.shields.io/microbadger/layers/brpaz/doks-deploy-tools.svg?style=for-the-badge)
 ![MicroBadger Size](https://img.shields.io/microbadger/image-size/brpaz/doks-deploy-tools.svg?style=for-the-badge)
