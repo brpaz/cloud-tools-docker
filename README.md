@@ -15,6 +15,7 @@
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
 * [Helm](https://helm.sh/) with [Helm Secrets Plugin](https://github.com/futuresimple/helm-secrets)
 * [Sops](https://github.com/mozilla/sops)
+* [Fluxctl](https://docs.fluxcd.io/en/1.17.1/references/fluxctl.html)
 
 ## Usage
 

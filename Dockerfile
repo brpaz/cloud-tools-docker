@@ -5,6 +5,7 @@ ARG DOCTL_VERSION=1.43.0
 ARG HELM_VERSION=3.2.0
 ARG DOCKER_CLI_VERSION="19.03.8"
 ARG SOPS_VERSION=3.5.0
+ARG FLUXCTL_VERSION=1.19.0
 
 RUN apk update && apk add --no-cache \
     bash \
@@ -47,5 +48,10 @@ RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64
 # Install sops
 RUN curl -L -o /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux && \
     sops -v
+
+# Install fluxctl
+RUN curl -L -o /usr/local/bin/fluxctl https://github.com/fluxcd/flux/releases/download/${FLUXCTL_VERSION}/fluxctl_linux_amd64 && \
+    chmod +x /usr/local/bin/fluxctl && \
+    fluxctl version
 
 CMD ["bash"]

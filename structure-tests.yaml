@@ -24,3 +24,7 @@ commandTests:
     command: sops
     args: ["-v"]
     exitCode: 0
+  - name: "Flux is installed"
+    command: fluxctl
+    args: ["version"]
+    exitCode: 0
