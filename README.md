@@ -48,7 +48,7 @@ make test
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com).
+Feel free to check [issues page](https://github.com/brpaz/doks-deploy-tools/issues).
 
 ## Show your support
 
