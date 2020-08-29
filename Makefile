@@ -1,5 +1,5 @@
 
-IMAGE_NAME:=cloud-tools:dev
+IMAGE_NAME:=doks-deploy-tools:dev
 
 lint: ## Runs hadoint against application dockerfile
 	@docker run --rm -v "$(PWD):/code" -w "/code" hadolint/hadolint hadolint Dockerfile
